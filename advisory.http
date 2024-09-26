@@ -1,7 +1,7 @@
 # to run in VS Code install REST Client extension
 
-// @baseUrl=http://localhost:5000/api/v4
-@baseUrl=http://dev.retailhub.ai/api/v4
+@baseUrl=http://localhost:5000/api/v4
+// @baseUrl=http://dev.retailhub.ai/api/v4
 @token=authtoken
 @language=en
 
@@ -139,16 +139,109 @@ Content-Type: application/json
 }
 
 #################################################################################
+#################################################################################
+###                                                                           ###
+###                               INTERVIEWEES                                ###
+###                                                                           ###
+#################################################################################
+#################################################################################
+
+#################################################################################
 ######################         list interviewees          #######################
 #################################################################################
 
-# survey_id:		int >= 1	(required)
+# survey_id:		int >= 1	(default: null)
 
 ###
-GET {{baseUrl}}/advisory/interviewees?survey_id=1
+GET {{baseUrl}}/advisory/interviewees
 Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 
+###
+GET {{baseUrl}}/advisory/interviewees/?survey_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees/?survey_id=3
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees/?survey_id=100
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#################################################################################
+#######################       read one interviewee        #######################
+#################################################################################
+
+###
+GET {{baseUrl}}/advisory/interviewees/1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees/100
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#################################################################################
+######################         create interviewee         #######################
+#################################################################################
+
+###
+POST {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "   Uiop",
+	"last_name": "Poiu   ",
+	"email": "   uiop@uiop.it   "
+}
+
+
+#################################################################################
+######################         update interviewee         #######################
+#################################################################################
+
+###
+PUT {{baseUrl}}/advisory/interviewees/50
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "  Uiop Modified",
+	"last_name": "   Poiu Modified    ",
+	"email": "uiop.modified@uiop.com     "
+}
+
+#################################################################################
+######################         delete interviewee         #######################
+#################################################################################
+
+###
+DELETE {{baseUrl}}/advisory/interviewees/7
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#################################################################################
+#####################         confirm interviewees         ######################
+#################################################################################
+
+###
+POST {{baseUrl}}/advisory/interviewees/confirm
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+Content-Type: application/json
+
+{
+	
+}
 
 #################################################################################
 #################################################################################
