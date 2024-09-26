@@ -1,7 +1,7 @@
 # to run in VS Code install REST Client extension
 
-@baseUrl=http://localhost:5000/api/v4
-// @baseUrl=http://dev.retailhub.ai/api/v4
+// @baseUrl=http://localhost:5000/api/v4
+@baseUrl=http://dev.retailhub.ai/api/v4
 @token=authtoken
 @language=en
 
