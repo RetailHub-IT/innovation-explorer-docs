@@ -1,0 +1,231 @@
+# to run in VS Code install REST Client extension
+
+@baseUrl=http://localhost:5000/api/v4
+@baseUrl=http://dev.retailhub.ai/api/v4
+@token=authtoken
+@language=en
+
+#############################################
+####              questions              ####
+#############################################
+
+# https://retailhub.ai/survey?token=asdfwqersdfsaga435sfsd87435sdfsfs
+
+# interviewee_survey_id:		int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/questions?interviewee_survey_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####           submit answers            ####
+#############################################
+
+# TODO: validare bene le risposte
+
+###
+POST {{baseUrl}}/advisory/submit
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+
+	"token": "asdf",
+	"answers": [
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		}
+	]
+}
+
+###
+POST {{baseUrl}}/advisory/submit
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+
+	"token": "asdf",
+	"answers": [
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		}
+	]
+}
+
+###
+POST {{baseUrl}}/advisory/submit
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+
+	"token": "asdf",
+	"answers": [
+		{
+			"innovation_id": 2,
+			"question_id": 4,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 1,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 3,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 2,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 5,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 6,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 7,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 8,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 9,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 12,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 10,
+			"score_id": 3
+		},
+		{
+			"innovation_id": 2,
+			"question_id": 11,
+			"score_id": 3
+		}
+	]
+}
+
+#############################################
+####            read answers             ####
+#############################################
+
+###
+GET {{baseUrl}}/advisory/answers
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/answers?interviewee_survey_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####            list surveys             ####
+#############################################
+
+###
+GET {{baseUrl}}/advisory/surveys
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/surveys?company_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/surveys?company_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####             delete survey           ####
+#############################################
+
+###
+DELETE {{baseUrl}}/advisory/surveys/1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}

@@ -1,0 +1,189 @@
+# to run in VS Code install REST Client extension
+
+@baseUrl=http://localhost:5000/api/v4
+@baseUrl=http://dev.retailhub.ai/api/v4
+@token=authtoken
+@language=en
+
+#############################################
+####          completion stats           ####
+#############################################
+
+# survey_id:		int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/completion?survey_id=3
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####       results by interviewee        ####
+#############################################
+
+# company_id:		int >= 0	(default: 0)
+# innovations_ids[]:	array		(default: null)
+# widget:			int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/by-interviewee?widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-interviewee?company_id=2&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-interviewee?company_id=2&innovations_ids[]=2&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####          results by survey          ####
+#############################################
+
+# company_id:		int >= 0	(default: 0)
+# innovations_ids[]:	array		(default: null)
+# widget:			int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/by-survey?widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-survey?company_id=2&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-survey?company_id=2&innovations_ids[]=2&innovations_ids[]=3&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####         results by absolute         ####
+#############################################
+
+# TODO: innovation_name al posto di innovation_description?
+
+# company_id:			int >= 0	(default: 0)
+# innovations_ids[]:	array		(default: null)
+# widget:				int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/by-absolute?widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-absolute?company_id=2&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-absolute?company_id=2&innovations_ids[]=2&innovations_ids[]=3&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####         results histograms          ####
+#############################################
+
+# company_id:		int >= 1	(required)
+# innovation_id:	int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/histograms?company_id=2&innovation_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####         stats by innovation         ####
+#############################################
+
+# company_id:		int >= 1	(required)
+# innovation_id:	int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/by-innovation?company_id=2&innovation_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####          stats by company           ####
+#############################################
+
+# per consulente retailhub
+# TODO: innovation_name al posto di innovation_description?
+
+# companies_ids[]:		array		(default: null)
+# innovations_ids[]:	array		(required)
+# widget:				int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/by-company?innovations_ids[]=2&innovations_ids[]=3&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/by-company?companies_ids[]=2&innovations_ids[]=2&innovations_ids[]=3&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####               ranking               ####
+#############################################
+
+# innovations_ids[]:		array		(default: null)
+# current_innovation_id:	int >= 1	(required, must be in the innovations_ids array)
+
+###
+GET {{baseUrl}}/advisory/results/ranking?current_innovation_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/ranking?innovations_ids[]=1&innovations_ids[]=2&innovations_ids[]=3&current_innovation_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####            download csv             ####
+#############################################
+
+# companies_ids[]:		array		(default: null)
+# innovations_ids[]:	array		(required)
+# widget:				int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/download?innovations_ids[]=2&innovations_ids[]=3&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/download?companies_ids[]=2&innovations_ids[]=2&innovations_ids[]=3&widget_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####     answers count by innovation     ####
+#############################################
+
+# company_id:		int >= 1	(required)
+
+###
+GET {{baseUrl}}/advisory/results/answers-count-by-innovation
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/answers-count-by-innovation?company_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/results/answers-count-by-innovation?company_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}

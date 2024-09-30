@@ -1,0 +1,92 @@
+# to run in VS Code install REST Client extension
+
+@baseUrl=http://localhost:5000/api/v4
+@baseUrl=http://dev.retailhub.ai/api/v4
+@token=authtoken
+@language=en
+
+#############################################
+####          list of all steps          ####
+#############################################
+
+###
+GET {{baseUrl}}/advisory/steps
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####             current step            ####
+#############################################
+
+###
+GET {{baseUrl}}/advisory/steps/current
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####              change step            ####
+#############################################
+
+###
+POST {{baseUrl}}/advisory/steps
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"newStep": 1
+}
+
+###
+POST {{baseUrl}}/advisory/steps
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"newStep": 2
+}
+
+###
+POST {{baseUrl}}/advisory/steps
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"newStep": 3
+}
+
+###
+POST {{baseUrl}}/advisory/steps
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"newStep": 6
+}
+
+#############################################
+####            send message             ####
+#############################################
+
+###
+POST {{baseUrl}}/advisory/message
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"message": "Voglio ridurre lo spreco di tempo durante l'attesa in cassa"
+}
+
+###
+POST {{baseUrl}}/advisory/message
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"message": "e come evitare i litigi nella fila?"
+}

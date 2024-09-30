@@ -1,0 +1,67 @@
+# to run in VS Code install REST Client extension
+
+@baseUrl=http://localhost:5000/api/v4
+@baseUrl=http://dev.retailhub.ai/api/v4
+@token=authtoken
+@language=en
+
+#############################################
+####            read analyses            ####
+#############################################
+
+###
+GET {{baseUrl}}/advisory/analyses
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####          read one analysis          ####
+#############################################
+
+###
+GET {{baseUrl}}/advisory/analyses/1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####         create one analysis         ####
+#############################################
+
+###
+POST {{baseUrl}}/advisory/analyses
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"title": "Test Advisory",
+	"description": "Un bellissimo advisory",
+	"company_id": 2,
+	"innovations_ids": [1, 2]
+}
+
+#############################################
+####         update one analysis         ####
+#############################################
+
+###
+PUT {{baseUrl}}/advisory/analyses/1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"title": "Test Advisory Modified",
+	"description": "Un bellissimo advisory modificato",
+	"innovations_ids": [3]
+}
+
+#############################################
+####         delete one analysis         ####
+#############################################
+
+###
+DELETE {{baseUrl}}/advisory/analyses/2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json

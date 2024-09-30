@@ -1,0 +1,220 @@
+# to run in VS Code install REST Client extension
+
+@baseUrl=http://localhost:5000/api/v4
+@baseUrl=http://dev.retailhub.ai/api/v4
+@token=authtoken
+@language=en
+
+#############################################
+####         read interviewees           ####
+#############################################
+
+# only one of the parameters must be present
+# company_id:		int >= 1	(default: null)
+# survey_id:		int >= 1	(default: null)
+
+### missing the parameters
+GET {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees?company_id=1&survey_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees?company_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees?company_id=2
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees/?survey_id=1
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees/?survey_id=3
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/interviewees/?survey_id=100
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+#############################################
+####         create interviewee          ####
+#############################################
+
+###
+POST {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "   Uiop",
+	"last_name": "Poiu   ",
+	"email": "   uiop@uiop.it   ",
+	"company_id": 2
+}
+
+###
+POST {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "Sixth",
+	"last_name": "Smith",
+	"email": "sixth.smith@gmail.com",
+	"company_id": 2
+}
+
+###
+POST {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "Seventh",
+	"last_name": "Setti",
+	"email": "seventh.setti@gmail.com",
+	"company_id": 2
+}
+
+
+#############################################
+####         update interviewee          ####
+#############################################
+
+###
+PUT {{baseUrl}}/advisory/interviewees/5
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "  Uiop Modified",
+	"last_name": "   Poiu Modified    ",
+	"email": "uiop.modified@uiop.com     "
+}
+
+###
+PUT {{baseUrl}}/advisory/interviewees/5
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"first_name": "  Uiop Modified",
+	"last_name": "   Poiu Modified    ",
+	"email": "uiop.modified@uiop.com     ",
+	"company_id": 2
+}
+
+#############################################
+####         delete interviewees         ####
+#############################################
+
+###
+DELETE {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"interviewees_ids": [100]
+}
+
+###
+DELETE {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"interviewees_ids": [5]
+}
+
+###
+DELETE {{baseUrl}}/advisory/interviewees
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"interviewees_ids": [6, 7]
+}
+
+#############################################
+####         confirm interviewees        ####
+#############################################
+
+###
+POST {{baseUrl}}/advisory/interviewees/add-to-survey
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"survey_id": 1,
+	"interviewees_ids": [5, 6, 7, 100],
+	"message": "There is a survery for you"
+}
+
+#############################################
+####      delete interviewee-survey      ####
+#############################################
+
+###
+DELETE {{baseUrl}}/advisory/interviewee-survey
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"interviewee_survey_ids": [100]
+}
+
+###
+DELETE {{baseUrl}}/advisory/interviewee-survey
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"interviewee_survey_ids": []
+}
+
+###
+DELETE {{baseUrl}}/advisory/interviewee-survey
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"interviewee_survey_ids": [12, 13, 15]
+}
+
+#############################################
+####          remind interviewee         ####
+#############################################
+
+###
+POST {{baseUrl}}/advisory/interviewee-survey/1/remind
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"message": "Please complete the survey"
+}
