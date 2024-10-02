@@ -1,7 +1,7 @@
 # to run in VS Code install REST Client extension
 
 @baseUrl=http://localhost:5000/api/v4
-@baseUrl=http://dev.retailhub.ai/api/v4
+// @baseUrl=http://dev.retailhub.ai/api/v4
 @token=authtoken
 @language=en
 
@@ -167,7 +167,7 @@ Content-Type: application/json
 
 {
 	"survey_id": 1,
-	"interviewees_ids": [5, 6, 7, 100],
+	"interviewees_ids": [5, 6, 7, 30, 100],
 	"message": "There is a survery for you"
 }
 

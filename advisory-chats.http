@@ -1,7 +1,7 @@
 # to run in VS Code install REST Client extension
 
 @baseUrl=http://localhost:5000/api/v4
-@baseUrl=http://dev.retailhub.ai/api/v4
+// @baseUrl=http://dev.retailhub.ai/api/v4
 @token=authtoken
 @language=en
 
@@ -34,7 +34,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"newStep": 1
+	"new_step": 1
 }
 
 ###
@@ -44,7 +44,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"newStep": 2
+	"new_step": 2
 }
 
 ###
@@ -54,7 +54,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"newStep": 3
+	"new_step": 3
 }
 
 ###
@@ -64,7 +64,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"newStep": 6
+	"new_step": 6
 }
 
 #############################################

@@ -1,7 +1,7 @@
 # to run in VS Code install REST Client extension
 
 @baseUrl=http://localhost:5000/api/v4
-@baseUrl=http://dev.retailhub.ai/api/v4
+// @baseUrl=http://dev.retailhub.ai/api/v4
 @token=authtoken
 @language=en
 
@@ -12,9 +12,26 @@
 # https://retailhub.ai/survey?token=asdfwqersdfsaga435sfsd87435sdfsfs
 
 # interviewee_survey_id:		int >= 1	(required)
+@intervieweeToken=a0f2e68cc3dc49868bc9e06c81deef0f10af854eb35d4af88b79b14091e77cb1
+@intervieweeSurveyId=1
 
 ###
-GET {{baseUrl}}/advisory/questions?interviewee_survey_id=1
+GET {{baseUrl}}/advisory/questions
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/questions?interviewee_survey_id={{intervieweeSurveyId}}
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/questions?token=wrongToken
+Accept-Language: {{language}}
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/advisory/questions?token={{intervieweeToken}}
 Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 
@@ -22,17 +39,17 @@ Authorization: Bearer {{token}}
 ####           submit answers            ####
 #############################################
 
-# TODO: validare bene le risposte
-
 ###
 POST {{baseUrl}}/advisory/submit
+# POST {{baseUrl}}/advisory/submit?interviewee_survey_id=10000
+# POST {{baseUrl}}/advisory/submit?token=wrongToken
+# POST {{baseUrl}}/advisory/submit?interviewee_survey_id={{intervieweeSurveyId}}
+# POST {{baseUrl}}/advisory/submit?token={{intervieweeToken}}
 Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-
-	"token": "asdf",
 	"answers": [
 		{
 			"innovation_id": 2,
@@ -43,14 +60,13 @@ Content-Type: application/json
 }
 
 ###
-POST {{baseUrl}}/advisory/submit
+POST {{baseUrl}}/advisory/submit?interviewee_survey_id={{intervieweeSurveyId}}
+# POST {{baseUrl}}/advisory/submit?token={{intervieweeToken}}
 Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-
-	"token": "asdf",
 	"answers": [
 		{
 			"innovation_id": 2,
@@ -116,74 +132,133 @@ Content-Type: application/json
 }
 
 ###
-POST {{baseUrl}}/advisory/submit
+POST {{baseUrl}}/advisory/submit?interviewee_survey_id={{intervieweeSurveyId}}
+# POST {{baseUrl}}/advisory/submit?token={{intervieweeToken}}
 Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-
-	"token": "asdf",
 	"answers": [
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 4,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 1,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 3,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 2,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 5,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 6,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 7,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 8,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 9,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 12,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 10,
 			"score_id": 3
 		},
 		{
-			"innovation_id": 2,
+			"innovation_id": 1,
 			"question_id": 11,
 			"score_id": 3
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 4,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 1,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 3,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 2,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 5,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 6,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 7,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 8,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 9,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 12,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 10,
+			"score_id": 4
+		},
+		{
+			"innovation_id": 3,
+			"question_id": 11,
+			"score_id": 4
 		}
 	]
 }
@@ -198,7 +273,7 @@ Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 
 ###
-GET {{baseUrl}}/advisory/answers?interviewee_survey_id=1
+GET {{baseUrl}}/advisory/answers?interviewee_survey_id={{intervieweeSurveyId}}
 Accept-Language: {{language}}
 Authorization: Bearer {{token}}
 
